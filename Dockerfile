@@ -6,6 +6,6 @@ ADD configs/ssl-template.cfg /etc/nginx/ssl-template.cfg
 ADD bin/prepare-env.sh /prepare-env.sh
 ADD bin/run.sh /run.sh
 
-ENTRYPOINT "/run.sh"
+ENTRYPOINT exec "/run.sh"
 
 EXPOSE 80 443
