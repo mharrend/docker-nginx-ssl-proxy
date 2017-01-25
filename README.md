@@ -51,10 +51,10 @@ server {
       proxy_set_header        X-Forwarded-Proto $scheme;
 
       # Fix the “It appears that your reverse proxy set up is broken" error.
-      proxy_pass          http://localhost:8080;
+      proxy_pass          http://localhost:%LISTEN_PORT%;
       proxy_read_timeout  90;
 
-      proxy_redirect      http://localhost:8080 https://jenkins.domain.com;
+      proxy_redirect      http://localhost:%LISTEN_PORT% https://%DOMAIN_NAME%;
     }
   }
 ```
