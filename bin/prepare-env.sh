@@ -4,7 +4,7 @@ export FOUND_DOMAINS=`env | grep -o "DOMAIN[0-9]*" | cut -d_ -f1 | sort -u`
 echo "Following domains were found:"
 for FOUND_DOMAIN in $FOUND_DOMAINS
 do
-  TMP_DOMAIN_NAME="${FOUND_DOMAIN}_NAME"
+  TMP_DOMAIN_NAME="${FOUND_DOMAIN}_DOMAIN_NAME"
   echo $FOUND_DOMAIN, ${!TMP_DOMAIN_NAME}
 done
 
@@ -12,7 +12,7 @@ done
 echo "Setting up site config for each domain"
 for FOUND_DOMAIN in $FOUND_DOMAINS
 do
-  TMP_DOMAIN_NAME="${FOUND_DOMAIN}_NAME"
+  TMP_DOMAIN_NAME="${FOUND_DOMAIN}_DOMAIN_NAME"
   TMP_SSL_CERT="${FOUND_DOMAIN}_SSL_CERT"
   TMP_SSL_KEY="${FOUND_DOMAIN}_SSL_KEY"
   TMP_LISTEN_PORT="${FOUND_DOMAIN}_LISTEN_PORT"
