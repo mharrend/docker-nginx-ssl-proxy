@@ -1,1 +1,1 @@
-/prepare-env.sh && nginx -g daemon off;
+/prepare-env.sh && exec nginx -g daemon off;
