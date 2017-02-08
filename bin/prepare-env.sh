@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Removing default nginx conf.d config and replace with data container"
-if [ -f /data ] ; then
+if [ -f /data/default.conf ] ; then
   echo "Removing conf.d"
   rm -rf /etc/nginx/conf.d
 else
