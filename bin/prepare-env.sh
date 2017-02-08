@@ -12,9 +12,6 @@ fi
 echo "Linking data directory"
 ln -s /data /etc/nginx/sites-enabled
 
-echo "Removing default nginx config"
-rm /etc/nginx/sites-enabled/default
-
 # Found domains: cut gets only first field, sort delivers only unique entries
 export FOUND_DOMAINS=`env | grep -o "DOMAIN[0-9]*" | cut -d_ -f1 | sort -u`
 echo "Following domains were found:"
