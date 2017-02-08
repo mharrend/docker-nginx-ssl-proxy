@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Found domains: cut gets only first field, sort delivers only unique entries
 export FOUND_DOMAINS=`env | grep -o "DOMAIN[0-9]*" | cut -d_ -f1 | sort -u`
 echo "Following domains were found:"
