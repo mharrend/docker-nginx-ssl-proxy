@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sleep 30
 echo $PWD
 ls $PWD
