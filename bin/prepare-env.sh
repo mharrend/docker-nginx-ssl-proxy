@@ -12,6 +12,9 @@ do
   echo $FOUND_DOMAIN ${!TMP_DOMAIN_NAME}
 done
 
+echo "Removing default nginx config
+rm /etc/nginx/sites-enabled/default
+
 # Setting up site config for each domain
 echo "Setting up site config for each domain"
 for FOUND_DOMAIN in $FOUND_DOMAINS
