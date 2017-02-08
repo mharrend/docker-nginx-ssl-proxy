@@ -6,7 +6,7 @@ if [ -f /data ] ; then
   rm -rf /etc/nginx/sites-enabled
 else
   echo "Moving sites-enabled to data"
-  mv /etc/nginx/sites-enabled/ /data/
+  mv /etc/nginx/sites-enabled/* /data/
 fi
 
 echo "Linking data directory"
