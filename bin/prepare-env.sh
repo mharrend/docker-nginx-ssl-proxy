@@ -51,6 +51,8 @@ do
   echo "      proxy_read_timeout  90;"                                         >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   echo ""                                                                      >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   echo "      proxy_redirect      http://localhost:"${!TMP_LISTEN_PORT}" https://"${!TMP_DOMAIN_NAME} ";"  >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
+  echo "    }"                                                                 >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
+  echo "  }"                                                                   >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   
   echo "Config set up for " ${!TMP_DOMAIN_NAME}
   echo ""
