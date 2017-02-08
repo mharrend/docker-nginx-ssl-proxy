@@ -6,7 +6,7 @@ if [ -f /data/default.conf ] ; then
   rm -rf /etc/nginx/conf.d
 else
   echo "Moving conf.d to data"
-  mv /etc/nginx/conf.d/* /data/
+  mv /etc/nginx/conf.d/* /data
 fi
 
 echo "Linking data directory"
