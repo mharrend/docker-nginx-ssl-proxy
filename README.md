@@ -86,7 +86,7 @@ docker build --tag nginx-ssl-proxy:alpine github.com/mharrend/docker-nginx-ssl-p
 ### Start docker container
 ```
 docker run --restart=always  -dt -p 80:80 -p 443:443 \
--v -v /home/nginx/sites-enabled:/data
+-v /home/nginx/sites-enabled:/data \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
 -e DOMAIN1_SSL_CERT=/etc/nginx/sites-enabled/subdom1.crt \
 -e DOMAIN1_SSL_KEY=/etc/nginx/sites-enabled/subdom1.key \
