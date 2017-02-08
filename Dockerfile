@@ -8,6 +8,7 @@ RUN chmod +x /prepare-env.sh
 ADD bin/run.sh /run.sh
 RUN chmod +x /run.sh
 
-ENTRYPOINT exec /run.sh
+ENTRYPOINT ["/run.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 80 443
