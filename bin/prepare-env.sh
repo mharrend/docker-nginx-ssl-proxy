@@ -43,7 +43,9 @@ do
   
   cat /etc/nginx/ssl-template-part2.cfg                 >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   
+  echo ""                                               >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   echo "    access_log "  ${!TMP_LOG_FILE} ";"          >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
+  echo ""                                               >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   
   cat /etc/nginx/ssl-template-part3.cfg                 >> /etc/nginx/sites-enabled/${!TMP_DOMAIN_NAME}
   
