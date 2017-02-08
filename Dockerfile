@@ -3,7 +3,7 @@ MAINTAINER Marco A. Harrendorf <marco.harrendorf@cern.ch>
 
 VOLUME ["/data"]
 
-ADD configs/http.cfg /etc/nginx/sites-enabled/default
+ADD configs/http.cfg /etc/nginx/conf.d/default.conf
 ADD configs/ssl-template-part1.cfg /etc/nginx/ssl-template-part1.cfg
 ADD configs/ssl-template-part2.cfg /etc/nginx/ssl-template-part2.cfg
 ADD configs/ssl-template-part3.cfg /etc/nginx/ssl-template-part3.cfg
