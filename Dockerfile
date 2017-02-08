@@ -8,6 +8,6 @@ RUN chmod +x /prepare-env.sh
 ADD bin/run.sh /run.sh
 RUN chmod +x /run.sh
 
-ENTRYPOINT /run.sh
+ENTRYPOINT exec /run.sh
 
 EXPOSE 80 443
