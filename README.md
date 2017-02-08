@@ -32,7 +32,7 @@ Notes:
 * Only proxying to servers listening on localhost port / sitting on the same host is implemented, since http connections to non-localhost machines can be a security flaw.
 
 ## Data volume
-* For a better customisation a data volume is added which will be mapped to the /etc/nginx/sites-enabled folder.
+* For a better customisation a data volume is added which will be mapped to the /etc/nginx/conf.d folder.
 * E.g. you can place your server certificates there to make them available to the docker container.
 
 ## More details
