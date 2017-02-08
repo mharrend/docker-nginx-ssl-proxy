@@ -33,7 +33,7 @@ Notes:
 
 ## Data volume
 * For a better customisation a data volume is added which will be mapped to the /etc/nginx/conf.d folder.
-* E.g. you can place your server certificates there to make them available to the docker container.
+
 
 ## More details
 * Use of NGinx alpine image to reduce image size.
@@ -95,7 +95,6 @@ docker run --restart=always  -dt -p 80:80 -p 443:443 \
 nginx-ssl-proxy:alpine
 ```
 ### Copy SSL certificate and key to docker container
-* Either make use of the data volume and place the SSL cert and key in the data container or copy them via
 ```
 docker cp /tmp/HOST/ssl.crt [ContainerID]:/etc/nginx/subdom1.crt
 docker cp /tmp/HOST/ssl.key [ContainerID]:/etc/nginx/subdom1.key
