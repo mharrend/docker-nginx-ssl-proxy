@@ -9,7 +9,7 @@ do
     continue
   fi
   TMP_DOMAIN_NAME="${FOUND_DOMAIN}_DOMAIN_NAME"
-  echo $FOUND_DOMAIN, ${!TMP_DOMAIN_NAME}
+  echo $FOUND_DOMAIN ${!TMP_DOMAIN_NAME}
 done
 
 # Setting up site config for each domain
