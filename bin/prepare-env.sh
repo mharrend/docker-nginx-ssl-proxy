@@ -18,12 +18,12 @@ do
   TMP_LISTEN_PORT="${FOUND_DOMAIN}_LISTEN_PORT"
   TMP_LOG_FILE="${FOUND_DOMAIN}_LOG_FILE"
   
-  echo "For the domain ", TMP_DOMAIN_NAME
+  echo "For the domain ", $TMP_DOMAIN_NAME
   echo "the following config will be used:"
-  echo "SSL_CERT: ", TMP_SSL_CERT
-  echo "SSL_KEY: ", TMP_SSL_KEY
-  echo "LISTEN_PORT: ", TMP_LISTEN_PORT
-  echo "LOG_FILE: ", TMP_LOG_FILE
+  echo "SSL_CERT: ", $TMP_SSL_CERT
+  echo "SSL_KEY: ", $TMP_SSL_KEY
+  echo "LISTEN_PORT: ", $TMP_LISTEN_PORT
+  echo "LOG_FILE: ", $TMP_LOG_FILE
   
   cp /etc/nginx/ssl-template.cfg /etc/nginx/sites-enabled/${FOUND_DOMAIN}_NAME
   sed -i "s|%DOMAIN_NAME%|${TMP_DOMAIN_NAME}||g" /etc/nginx/sites-enabled/${FOUND_DOMAIN}_NAME
