@@ -6,11 +6,11 @@ if [ -f /data ] ; then
   rm -rf /etc/nginx/sites-enabled
 else
   echo "Moving sites-enabled to data"
-  mv /etc/nginx/sites-enabled /data
+  mv /etc/nginx/sites-enabled/ /data/
 fi
 
 echo "Linking data directory"
-ln -s /data /etc/nginx/sites-enabled�
+ln -s /data /etc/nginx/sites-enabled
 
 echo "Removing default nginx config"
 rm /etc/nginx/sites-enabled/default
