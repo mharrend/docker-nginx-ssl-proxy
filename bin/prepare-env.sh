@@ -10,8 +10,9 @@ else
 fi
 
 echo "Removing ssl-cert config and replace with data container"
-if [ -f /data/ssl-cert/* ] ; then
+if [ -f /data/ssl-cert ] ; then
   echo "No ssl-certificate folder found"
+  mkdir /data/ssl-cert
 else
   echo "Moving ssl-cert to data/ssl-cert"
   mv /etc/nginx/ssl-cert /data/
