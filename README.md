@@ -101,7 +101,7 @@ docker cp /tmp/HOST/ssl.key [ContainerID]:/etc/nginx/subdom1.key
 ### Start docker container
 ```
 docker run --restart=always  -dt -p 80:80 -p 443:443 \
--v /home/nginx/sites-enabled:/data \
+-v /home/nginx:/data \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
 -e DOMAIN1_SSL_CERT=/etc/nginx/ssl-cert/subdom1.crt \
 -e DOMAIN1_SSL_KEY=/etc/nginx/ssl-cert/subdom1.key \
