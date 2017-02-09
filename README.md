@@ -22,8 +22,8 @@ appended by the following keywords:
 ```
 docker run ... \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
--e DOMAIN1_SSL_CERT=/etc/nginx/subdom1.crt \
--e DOMAIN1_SSL_KEY=/etc/nginx/subdom1.key \
+-e DOMAIN1_SSL_CERT=/etc/nginx/ssl-cert/subdom1.crt \
+-e DOMAIN1_SSL_KEY=/etc/nginx/ssl-cert/subdom1.key \
 -e DOMAIN1_LISTEN_PORT=8080 \
 -e DOMAIN1_LOG_FILE=/var/log/nginx/subdom1.access.log \
 ...
