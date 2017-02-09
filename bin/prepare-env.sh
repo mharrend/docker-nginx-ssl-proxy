@@ -1,16 +1,25 @@
 #!/bin/bash
 
 echo "Removing default nginx conf.d config and replace with data container"
-if [ -f /data/default.conf ] ; then
+if [ -f /data/conf.d/default.conf ] ; then
   echo "Removing conf.d"
   rm -rf /etc/nginx/conf.d
 else
-  echo "Moving conf.d to data"
-  mv /etc/nginx/conf.d/* /data
+  echo "Moving conf.d to data/conf.d"
+  mv /etc/nginx/conf.d /data/
+fi
+
+echo "Removing ssl-cert config and replace with data container"
+if [ -f /data/ssl-cert/* ] ; then
+  echo "No ssl-certificate folder found"
+else
+  echo "Moving ssl-cert to data/ssl-cert"
+  mv /etc/nginx/ssl-cert /data/
 fi
 
 echo "Linking data directory"
-ln -s /data /etc/nginx/conf.d
+ln -s /data/conf.d /etc/nginx/conf.d
+ln -s /data/ssl-cert /etc/nginx/ssl-cert
 
 # Found domains: cut gets only first field, sort delivers only unique entries
 export FOUND_DOMAINS=`env | grep -o "DOMAIN[0-9]*" | cut -d_ -f1 | sort -u`
