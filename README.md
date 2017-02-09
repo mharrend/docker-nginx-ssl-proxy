@@ -32,7 +32,9 @@ Notes:
 * Only proxying to servers listening on localhost port / sitting on the same host is implemented, since http connections to non-localhost machines can be a security flaw.
 
 ## Data volume
-* For a better customisation a data volume is added which will be mapped to the /etc/nginx/conf.d folder.
+* For a better customisation a data volume is added.
+* The data/conf.d subfolder is mapped to the /etc/nginx/conf.d folder, so that it is easy to adjust the nginx config.
+* The data/ssl-cert subfolder is linked to the /etc/nginx/ssl-cert folder, so that it can be justed to store the SSL certificates and keys.
 
 
 ## More details
@@ -83,19 +85,28 @@ server {
 ```
 docker build --tag nginx-ssl-proxy:alpine github.com/mharrend/docker-nginx-ssl-proxy
 ```
+
+### Copy SSL certificate and key to docker container
+* The easiest way to copy the SSL certificate and key to the docker container is to make use of the data/ssl-cert container:
+```
+cp /tmp/HOST/ssl.crt /HOST/data/ssl-cert/subdom1.crt
+cp /tmp/HOST/ssl.key /HOST/data/ssl-cert/subdom1.key
+```
+* Another solution is to to copy the SSL certificate and key directly to the docker container via
+```
+docker cp /tmp/HOST/ssl.crt [ContainerID]:/etc/nginx/subdom1.crt
+docker cp /tmp/HOST/ssl.key [ContainerID]:/etc/nginx/subdom1.key
+```
+
 ### Start docker container
 ```
 docker run --restart=always  -dt -p 80:80 -p 443:443 \
 -v /home/nginx/sites-enabled:/data \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
--e DOMAIN1_SSL_CERT=/etc/nginx/sites-enabled/subdom1.crt \
--e DOMAIN1_SSL_KEY=/etc/nginx/sites-enabled/subdom1.key \
+-e DOMAIN1_SSL_CERT=/etc/nginx/ssl-cert/subdom1.crt \
+-e DOMAIN1_SSL_KEY=/etc/nginx/ssl-cert/subdom1.key \
 -e DOMAIN1_LISTEN_PORT=8080 \
 -e DOMAIN1_LOG_FILE=/var/log/nginx/subdom1.access.log  \
 nginx-ssl-proxy:alpine
 ```
-### Copy SSL certificate and key to docker container
-```
-docker cp /tmp/HOST/ssl.crt [ContainerID]:/etc/nginx/subdom1.crt
-docker cp /tmp/HOST/ssl.key [ContainerID]:/etc/nginx/subdom1.key
-```
+
