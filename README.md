@@ -39,14 +39,14 @@ Notes:
 
 ## More details
 * Use of NGinx alpine image to reduce image size.
-* The /etc/nginx/sites-enabled/default file will contain:
+* The /etc/nginx/conf.d/default.conf file will contain:
 ```
 server {
     listen 80;
     return 301 https://$host$request_uri;
 }
 ```
-* The sub sites will be defined in a /etc/nginx/sites-enabled/%DOMAIN_NAME% file in the following way
+* The sub sites will be defined in a /etc/nginx/conf.d/%DOMAIN_NAME% file in the following way
 ```
 server {
     listen 443;
