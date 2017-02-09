@@ -15,7 +15,7 @@ appended by the following keywords:
 | DOMAIN\_NAME   | subdom1.domain.com       | Domain name |
 | SSL\_CERT      | /etc/nginx/subdom1.crt   | Path to SSL certificate |
 | SSL\_KEY       | /etc/nginx/subdom1.key   | Path to SSL key |
-| LISTEN_IP      | 172.15.0.2  or localhost | Port listen by proxied server|
+| LISTEN_IP      | 172.15.0.2  or localhost | IP of proxied server|
 | LISTEN_PORT    | 8080                     | Port listen by proxied server| 
 | LOG\_FILE      | /var/log/nginx/subdom1.access.log  | Path for log file|
 
