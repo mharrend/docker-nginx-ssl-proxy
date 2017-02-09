@@ -11,12 +11,12 @@ DOMAIN[0-1000]_
 appended by the following keywords:
 
 |   VAR          |    example             | description            |
-|----------------|------------------------|------------------------|
-| DOMAIN\_NAME   | subdom1.domain.com     | Domain name |
-| SSL\_CERT      | /etc/nginx/subdom1.crt | Path to SSL certificate |
-| SSL\_KEY       | /etc/nginx/subdom1.key | Path to SSL key |
-| LISTEN_IP      | 172.15.0.2             | Port listen by proxied server|
-| LISTEN_PORT    | 8080                   | Port listen by proxied server| 
+|----------------|--------------------------|------------------------|
+| DOMAIN\_NAME   | subdom1.domain.com       | Domain name |
+| SSL\_CERT      | /etc/nginx/subdom1.crt   | Path to SSL certificate |
+| SSL\_KEY       | /etc/nginx/subdom1.key   | Path to SSL key |
+| LISTEN_IP      | 172.15.0.2  or localhost | Port listen by proxied server|
+| LISTEN_PORT    | 8080                     | Port listen by proxied server| 
 | LOG\_FILE      | /var/log/nginx/subdom1.access.log  | Path for log file|
 
 * E.g., a proper setting of the first domain could be
@@ -25,6 +25,7 @@ docker run ... \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
 -e DOMAIN1_SSL_CERT=/etc/nginx/ssl-cert/subdom1.crt \
 -e DOMAIN1_SSL_KEY=/etc/nginx/ssl-cert/subdom1.key \
+-e DOMAIN1_LISTEN_IP=172.15.0.2 \
 -e DOMAIN1_LISTEN_PORT=8080 \
 -e DOMAIN1_LOG_FILE=/var/log/nginx/subdom1.access.log \
 ...
@@ -106,8 +107,11 @@ docker run --restart=always  -dt -p 80:80 -p 443:443 \
 -e DOMAIN1_DOMAIN_NAME= subdomain1.domain.com \
 -e DOMAIN1_SSL_CERT=/etc/nginx/ssl-cert/subdom1.crt \
 -e DOMAIN1_SSL_KEY=/etc/nginx/ssl-cert/subdom1.key \
+-e DOMAIN1_LISTEN_IP=localhost \
 -e DOMAIN1_LISTEN_PORT=8080 \
 -e DOMAIN1_LOG_FILE=/var/log/nginx/subdom1.access.log  \
 nginx-ssl-proxy:alpine
 ```
 
+### Possible further improvements
+* Making use of docker linking to get LISTEN\_IP and LISTEN\_PORT automatically, making sure that it also works with non-dockerized web services.
