@@ -49,6 +49,7 @@ do
   TMP_DOMAIN_NAME="${FOUND_DOMAIN}_DOMAIN_NAME"
   TMP_SSL_CERT="${FOUND_DOMAIN}_SSL_CERT"
   TMP_SSL_KEY="${FOUND_DOMAIN}_SSL_KEY"
+  TMP_LISTEN_IP="${FOUND_DOMAIN}_LISTEN_IP"
   TMP_LISTEN_PORT="${FOUND_DOMAIN}_LISTEN_PORT"
   TMP_LOG_FILE="${FOUND_DOMAIN}_LOG_FILE"
   
@@ -56,6 +57,7 @@ do
   echo "the following config will be used:"
   echo "SSL_CERT: " ${!TMP_SSL_CERT}
   echo "SSL_KEY: " ${!TMP_SSL_KEY}
+  echo "LISTEN_IP: " ${!TMP_LISTEN_IP}
   echo "LISTEN_PORT: " ${!TMP_LISTEN_PORT}
   echo "LOG_FILE: " ${!TMP_LOG_FILE}
   
@@ -74,10 +76,10 @@ do
   
   cat /etc/nginx/ssl-template-part3.cfg                 >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   
-  echo "      proxy_pass          http://localhost:"${!TMP_LISTEN_PORT} ";"    >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
+  echo "      proxy_pass          http://"${!TMP_LISTEN_IP}":"${!TMP_LISTEN_PORT} ";"    >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   echo "      proxy_read_timeout  90;"                                         >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   echo ""                                                                      >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
-  echo "      proxy_redirect      http://localhost:"${!TMP_LISTEN_PORT}" https://"${!TMP_DOMAIN_NAME} ";"  >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
+  echo "      proxy_redirect      http://"${!TMP_LISTEN_IP}":"${!TMP_LISTEN_PORT}" https://"${!TMP_DOMAIN_NAME} ";"  >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   echo "    }"                                                                 >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   echo "  }"                                                                   >> /etc/nginx/conf.d/${!TMP_DOMAIN_NAME}
   
