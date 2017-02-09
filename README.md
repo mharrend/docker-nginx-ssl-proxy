@@ -15,6 +15,7 @@ appended by the following keywords:
 | DOMAIN\_NAME   | subdom1.domain.com     | Domain name |
 | SSL\_CERT      | /etc/nginx/subdom1.crt | Path to SSL certificate |
 | SSL\_KEY       | /etc/nginx/subdom1.key | Path to SSL key |
+| LISTEN_IP      | 172.15.0.2             | Port listen by proxied server|
 | LISTEN_PORT    | 8080                   | Port listen by proxied server| 
 | LOG\_FILE      | /var/log/nginx/subdom1.access.log  | Path for log file|
 
@@ -29,7 +30,7 @@ docker run ... \
 ...
 ```
 Notes:
-* Only proxying to servers listening on localhost port / sitting on the same host is implemented, since http connections to non-localhost machines can be a security flaw.
+* Only proxying to servers listening on localhost port / sitting on the same host should be used, since http connections to non-localhost machines can be a security flaw.
 
 ## Data volume
 * For a better customisation a data volume is added.
