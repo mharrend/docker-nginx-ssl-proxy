@@ -70,7 +70,8 @@ server {
       proxy_set_header        Host $host;
       proxy_set_header        X-Real-IP $remote_addr;
       proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header        X-Forwarded-Proto $scheme;
+      proxy_set_header        X-Forwarded-Proto https;
+      proxy_set_header        SSL_PROTOCOL $ssl_protocol;
 
       # Fix the “It appears that your reverse proxy set up is broken" error.
       proxy_pass          http://localhost:%LISTEN_PORT%;
